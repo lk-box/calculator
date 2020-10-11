@@ -9,21 +9,25 @@ namespace _2_5
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("请输入整型操作数及操作符（例： 1 + 2 ）：");
-            string str = Console.ReadLine();
-            string[] data = str.Split(' ');
-
-            Calculator count = new Calculator();
-
-            switch (data[1])
+            for (int i = 0; i < 6; i++)
             {
-                case "+": Console.WriteLine("和是：{0}  字符串拼接结果为：{1}", count.Add(int.Parse(data[0]), int.Parse(data[2])), count.Add(data[0], data[2])); break;
-                case "-": Console.WriteLine("差是：{0}  字符串相除结果为：{1}", count.Sub(int.Parse(data[0]), int.Parse(data[2])), count.Sub(data[0], data[2])); break;
-                case "*": Console.WriteLine("积是：{0}", count.Multiply(int.Parse(data[0]), int.Parse(data[2]))); break;
-                case "/": Console.Write("商是："); count.Divide(int.Parse(data[0]), int.Parse(data[2])); break;
+                Console.WriteLine("请输入整型操作数及操作符（例： 1 + 2 ）：");
+                string str = Console.ReadLine();
+                string[] data = str.Split(' ');
 
+                Calculator count;
+
+                switch (data[1])
+                {
+                    case "+": Add add = new Add(); count = add; Console.WriteLine("和是：{0}", count.Task(int.Parse(data[0]), int.Parse(data[2]))); break;
+                    case "-": Subtract sub = new Subtract(); count = sub; Console.WriteLine("差是：{0}", count.Task(int.Parse(data[0]), int.Parse(data[2]))); break;
+                    case "*": Multiply mtp = new Multiply(); count = mtp; Console.WriteLine("积是：{0}", count.Task(int.Parse(data[0]), int.Parse(data[2]))); break;
+                    case "/": Divide dvd = new Divide(); count = dvd; Console.Write("商是："); count.Task(int.Parse(data[0]), int.Parse(data[2])); break;
+                    case "&": And and = new And(); count = and; Console.WriteLine("按位与结果是：{0}", count.Task(int.Parse(data[0]), int.Parse(data[2]))); break;
+                    case "%": Remainder rmd = new Remainder(); count = rmd; Console.WriteLine("余数是：{0}", count.Task(int.Parse(data[0]), int.Parse(data[2]))); break;
+                }
             }
+
         }
     }
 }
